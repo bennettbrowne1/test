@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #080808;
+    color: #ffffff;
+    font-family: 'Lora', Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(90deg, #ff6a00, #ffa033);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .orange-glow {
+    box-shadow: 0 0 0 1px rgba(255,106,0,0.2), 0 4px 24px rgba(255,106,0,0.08);
+  }
+
+  .orange-glow-hover:hover {
+    box-shadow: 0 0 0 1px rgba(255,106,0,0.5), 0 8px 40px rgba(255,106,0,0.25);
+    transform: translateY(-4px);
+  }
+
+  .ip-btn-primary {
+    @apply bg-ip-orange text-white font-barlow font-bold uppercase tracking-widest text-sm px-7 py-3.5
+           hover:bg-ip-orange-l transition-all duration-200 inline-block;
+  }
+
+  .ip-btn-outline {
+    @apply border border-ip-orange text-ip-orange font-barlow font-bold uppercase tracking-widest text-sm px-7 py-3.5
+           hover:bg-ip-orange hover:text-white transition-all duration-200 inline-block;
+  }
+}
