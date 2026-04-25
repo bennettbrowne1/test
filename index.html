@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flash Afterimage</title>
+  <style>
+    /* ─── Reset & base ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #08080f;
+      --surface:   #0f0f1a;
+      --border:    #1e1e35;
+      --cyan:      #00f5ff;
+      --magenta:   #ff00c8;
+      --white:     #f0f0ff;
+      --muted:     #6b6b8a;
+      --grad: linear-gradient(135deg, var(--cyan), var(--magenta));
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── Nav ──────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(8, 8, 15, 0.75);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--grad);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      padding: 0.55rem 1.3rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; transform: scale(1.04); }
+
+    /* ─── Hero ─────────────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ambient glow blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.18;
+      pointer-events: none;
+    }
+    .blob-1 { width: 600px; height: 600px; background: var(--cyan);    top: -150px; left: -100px; }
+    .blob-2 { width: 500px; height: 500px; background: var(--magenta); bottom: -100px; right: -80px; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.8rem;
+    }
+    .hero-eyebrow span { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); display: inline-block; }
+
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.4rem;
+    }
+    .hero-title .gradient-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 2.8rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    .btn-primary {
+      background: var(--grad);
+      color: #000;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 0.85rem 2.1rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 32px rgba(0,245,255,0.25);
+    }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 48px rgba(0,245,255,0.4); }
+
+    .btn-secondary {
+      color: var(--white);
+      font-size: 1rem;
+      padding: 0.85rem 2.1rem;
+      border-radius: 100px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--cyan); background: rgba(0,245,255,0.05); }
+
+    /* ─── Demo ─────────────────────────────────────────────────────────── */
+    #demo {
+      padding: 7rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 3.5rem;
+    }
+
+    /* afterimage canvas area */
+    .demo-stage {
+      position: relative;
+      width: min(480px, 90vw);
+      height: min(480px, 90vw);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* stare-target: bright inverted image */
+    .stare-layer {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.05s;
+    }
+
+    .stare-symbol {
+      width: 160px;
+      height: 160px;
+      position: relative;
+    }
+    /* Bright yellow/green complementary shape — afterimage will be cyan/magenta */
+    .stare-symbol svg { width: 100%; height: 100%; }
+
+    /* countdown ring */
+    .countdown-ring {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      pointer-events: none;
+    }
+    .countdown-ring svg {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px; height: 200px;
+    }
+    .countdown-ring circle {
+      fill: none;
+      stroke: var(--cyan);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 565.5;
+      stroke-dashoffset: 565.5;
+      transform-origin: center;
+      transform: rotate(-90deg);
+      transition: stroke-dashoffset 0.1s linear;
+    }
+    .countdown-num {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* afterimage overlay: dark bg where inverted colors "burn in" */
+    .afterimage-layer {
+      position: absolute;
+      inset: 0;
+      background: #111118;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .afterimage-layer.visible { opacity: 1; }
+
+    .afterimage-symbol {
+      width: 160px;
+      height: 160px;
+      animation: fadeAway 3s ease-out forwards;
+    }
+    @keyframes fadeAway {
+      0%   { opacity: 0.9; filter: blur(0px); }
+      60%  { opacity: 0.5; filter: blur(2px); }
+      100% { opacity: 0;   filter: blur(12px); }
+    }
+
+    .demo-hint {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      height: 1.4em;
+      transition: opacity 0.3s;
+    }
+
+    /* fixation dot pulse */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(1.5); }
+    }
+    .fix-dot { animation: pulse 0.9s ease-in-out infinite; }
+
+    /* ─── Features ─────────────────────────────────────────────────────── */
+    #features {
+      padding: 7rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    #features .header { text-align: center; margin-bottom: 4rem; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .feature-card:hover { border-color: var(--cyan); transform: translateY(-4px); }
+
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+    .icon-cyan    { background: rgba(0,245,255,0.12); }
+    .icon-magenta { background: rgba(255,0,200,0.12); }
+    .icon-purple  { background: rgba(140,0,255,0.12); }
+
+    .feature-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feature-desc  { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+    /* ─── How It Works ─────────────────────────────────────────────────── */
+    #how {
+      padding: 7rem 1.5rem;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 50%, var(--bg) 100%);
+    }
+
+    .steps {
+      display: flex;
+      gap: 0;
+      max-width: 900px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .step {
+      flex: 1 1 220px;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 2.8rem;
+      right: -1px;
+      width: 2px;
+      height: 40%;
+      background: var(--border);
+    }
+
+    .step-num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .step-title { font-weight: 700; margin-bottom: 0.4rem; }
+    .step-desc  { font-size: 0.88rem; color: var(--muted); }
+
+    /* ─── CTA ──────────────────────────────────────────────────────────── */
+    #cta {
+      padding: 7rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta .blob-1 { opacity: 0.12; }
+    #cta .blob-2 { opacity: 0.1;  }
+
+    .cta-box {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 4rem 3rem;
+    }
+
+    .cta-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.025em; margin-bottom: 1rem; }
+    .cta-sub   { color: var(--muted); margin-bottom: 2.2rem; }
+
+    .email-form {
+      display: flex;
+      gap: 0.6rem;
+      max-width: 440px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .email-form input {
+      flex: 1 1 200px;
+      background: #0a0a14;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--white);
+      font-size: 0.95rem;
+      padding: 0.75rem 1.3rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .email-form input:focus { border-color: var(--cyan); }
+    .email-form input::placeholder { color: var(--muted); }
+    .email-form button {
+      background: var(--grad);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 24px rgba(0,245,255,0.2);
+      white-space: nowrap;
+    }
+    .email-form button:hover { transform: scale(1.04); box-shadow: 0 0 36px rgba(0,245,255,0.35); }
+
+    .form-note { margin-top: 0.9rem; font-size: 0.78rem; color: var(--muted); }
+    .form-success { display: none; color: var(--cyan); font-weight: 600; font-size: 0.95rem; margin-top: 1rem; }
+
+    /* ─── Footer ───────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ─── Scroll-reveal ────────────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── Responsive ───────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .step:not(:last-child)::after { display: none; }
+      .cta-box { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ──────────────────────────────────────────────────────────── -->
+  <nav>
+    <span class="nav-logo">Flash Afterimage</span>
+    <ul class="nav-links">
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">Get Early Access</a>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="hero-eyebrow"><span></span> Visual Perception · Redefined</div>
+
+    <h1 class="hero-title">
+      Leave a lasting<br/>
+      <span class="gradient-text">impression.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Flash Afterimage harnesses the science of visual persistence to burn
+      your brand into memory — moments after a single glance.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#demo" class="btn-primary">Try the Demo</a>
+      <a href="#features" class="btn-secondary">Learn More</a>
+    </div>
+  </section>
+
+  <!-- ── Interactive Demo ──────────────────────────────────────────────── -->
+  <section id="demo">
+    <p class="section-label reveal">Interactive Experience</p>
+    <h2 class="section-title reveal">See it for yourself</h2>
+    <p class="section-sub reveal">
+      Hold the button below. Stare at the center dot without blinking.
+      Release — and watch the afterimage appear.
+    </p>
+
+    <div class="demo-stage" id="stage" aria-label="Afterimage demo — hold to stare, release to see afterimage">
+
+      <!-- Bright stare target -->
+      <div class="stare-layer" id="stareLayer">
+        <div class="stare-symbol">
+          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Bright yellow-green bolt shape — afterimage will be cyan/violet -->
+            <polygon points="90,10 40,90 75,90 60,150 120,65 82,65" fill="#ddff00" />
+            <!-- fixation dot -->
+            <circle class="fix-dot" cx="80" cy="80" r="5" fill="#fff" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Countdown ring overlay -->
+      <div class="countdown-ring" id="countdownRing" style="display:none;">
+        <svg viewBox="0 0 200 200">
+          <circle id="progressCircle" cx="100" cy="100" r="90"/>
+        </svg>
+        <span class="countdown-num" id="countdownNum">3</span>
+      </div>
+
+      <!-- Afterimage layer (dark bg + inverted shape) -->
+      <div class="afterimage-layer" id="afterimageLayer">
+        <div class="afterimage-symbol">
+          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Complementary color: cyan/violet afterimage of the yellow-green bolt -->
+            <polygon points="90,10 40,90 75,90 60,150 120,65 82,65"
+                     fill="none" stroke="#00f5ff" stroke-width="2"
+                     style="filter:drop-shadow(0 0 18px #00f5ff) drop-shadow(0 0 40px #c800ff);" />
+            <polygon points="90,10 40,90 75,90 60,150 120,65 82,65"
+                     fill="rgba(0,245,255,0.15)"
+                     style="filter:blur(6px);" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <p class="demo-hint" id="demoHint">Hold &amp; stare → release to see the afterimage</p>
+  </section>
+
+  <!-- ── Features ─────────────────────────────────────────────────────── -->
+  <section id="features">
+    <div class="header">
+      <p class="section-label reveal">Why Flash Afterimage</p>
+      <h2 class="section-title reveal">Engineered for recall</h2>
+      <p class="section-sub reveal">Every feature is built around one goal: making your content impossible to forget.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon icon-cyan">⚡</div>
+        <h3 class="feature-title">Instant Imprinting</h3>
+        <p class="feature-desc">A precisely timed flash sequence primes the visual cortex, embedding your message in short-term photoreceptor memory within seconds.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon icon-magenta">🎨</div>
+        <h3 class="feature-title">Complementary Palette Engine</h3>
+        <p class="feature-desc">Our color science module automatically derives the complementary afterimage hues for any brand palette, maximising perceptual contrast.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon icon-purple">📐</div>
+        <h3 class="feature-title">Shape Optimization</h3>
+        <p class="feature-desc">High-spatial-frequency edges produce sharper afterimages. Our analyser scores and refines your logo geometry for peak retention.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon icon-cyan">⏱</div>
+        <h3 class="feature-title">Adaptive Exposure Timing</h3>
+        <p class="feature-desc">Machine-learned models calibrate flash duration per viewer context — ambient light, display brightness, and content type all factor in.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon icon-magenta">📊</div>
+        <h3 class="feature-title">Recall Analytics</h3>
+        <p class="feature-desc">Track afterimage strength with our in-app perception survey toolkit. A/B test sequences and measure memory lift in real campaigns.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon icon-purple">🔌</div>
+        <h3 class="feature-title">One-Line SDK</h3>
+        <p class="feature-desc">Drop a single <code style="color:var(--cyan);font-size:0.85em;">&lt;script&gt;</code> tag into any page. Wrap any element with our API to make it afterimage-ready in under a minute.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works ──────────────────────────────────────────────────── -->
+  <section id="how">
+    <p class="section-label reveal">The Science</p>
+    <h2 class="section-title reveal">How It Works</h2>
+    <p class="section-sub reveal" style="margin: 0 auto 3.5rem;">
+      Afterimages arise when photoreceptors fatigue from sustained stimulation.
+      Flash Afterimage engineers this effect deliberately.
+    </p>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Flash</h3>
+        <p class="step-desc">A high-luminance inverted version of your asset is displayed for 2–4 seconds, saturating cone cells.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Fatigue</h3>
+        <p class="step-desc">Cones sensitive to the stimulus colours become temporarily desensitised, creating a neural imbalance.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Afterimage</h3>
+        <p class="step-desc">When the stimulus is removed, opposing cones dominate — projecting a vivid complementary ghost image.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Memory</h3>
+        <p class="step-desc">The unusual perceptual experience cements the brand in episodic memory, boosting aided recall by up to 3×.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────────────────────────── -->
+  <section id="cta">
+    <div class="blob blob-1" style="top:-200px;left:-150px;"></div>
+    <div class="blob blob-2" style="bottom:-200px;right:-150px;"></div>
+
+    <div class="cta-box reveal">
+      <h2 class="cta-title">Ready to be<br/><span class="gradient-text">unforgettable?</span></h2>
+      <p class="cta-sub">Join the waitlist for early access. No credit card required.</p>
+
+      <form class="email-form" id="ctaForm" onsubmit="handleSubmit(event)">
+        <input type="email" placeholder="your@email.com" required aria-label="Email address" />
+        <button type="submit">Get Access</button>
+      </form>
+      <p class="form-note">We respect your privacy. Zero spam, ever.</p>
+      <p class="form-success" id="formSuccess">You're on the list! We'll be in touch soon. ✦</p>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-logo">Flash Afterimage</span>
+    <p>© 2026 Flash Afterimage. All rights reserved.</p>
+    <nav class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </nav>
+  </footer>
+
+  <script>
+    /* ── Afterimage Demo ─────────────────────────────────────────────── */
+    const stage          = document.getElementById('stage');
+    const stareLayer     = document.getElementById('stareLayer');
+    const afterimageLayer= document.getElementById('afterimageLayer');
+    const countdownRing  = document.getElementById('countdownRing');
+    const progressCircle = document.getElementById('progressCircle');
+    const countdownNum   = document.getElementById('countdownNum');
+    const demoHint       = document.getElementById('demoHint');
+
+    const STARE_DURATION = 3000; // ms
+    const CIRCUMFERENCE  = 2 * Math.PI * 90; // ≈565.5
+
+    let holding = false;
+    let holdStart = null;
+    let raf = null;
+    let cooldown = false;
+
+    function startHold() {
+      if (cooldown) return;
+      holding = true;
+      holdStart = performance.now();
+      afterimageLayer.classList.remove('visible');
+      stareLayer.style.opacity = '1';
+      countdownRing.style.display = 'flex';
+      demoHint.textContent = 'Keep staring… don\'t look away!';
+      tick();
+    }
+
+    function tick() {
+      if (!holding) return;
+      const elapsed = performance.now() - holdStart;
+      const fraction = Math.min(elapsed / STARE_DURATION, 1);
+      const offset = CIRCUMFERENCE * (1 - fraction);
+      progressCircle.style.strokeDashoffset = offset;
+      const remaining = Math.ceil((STARE_DURATION - elapsed) / 1000);
+      countdownNum.textContent = Math.max(remaining, 0);
+
+      if (fraction >= 1) {
+        endHold(true);
+        return;
+      }
+      raf = requestAnimationFrame(tick);
+    }
+
+    function endHold(complete) {
+      holding = false;
+      cancelAnimationFrame(raf);
+      countdownRing.style.display = 'none';
+
+      if (complete || (holdStart && (performance.now() - holdStart) > 1200)) {
+        triggerAftImage();
+      } else {
+        demoHint.textContent = 'Hold longer — stare for at least 1 second';
+        stareLayer.style.opacity = '1';
+      }
+    }
+
+    function triggerAftImage() {
+      stareLayer.style.opacity = '0';
+      afterimageLayer.classList.add('visible');
+
+      // re-trigger CSS animation by cloning the symbol
+      const sym = afterimageLayer.querySelector('.afterimage-symbol');
+      const clone = sym.cloneNode(true);
+      sym.replaceWith(clone);
+
+      demoHint.textContent = 'There it is — the afterimage!';
+      cooldown = true;
+
+      setTimeout(() => {
+        afterimageLayer.classList.remove('visible');
+        stareLayer.style.opacity = '1';
+        demoHint.textContent = 'Hold & stare → release to see the afterimage';
+        cooldown = false;
+      }, 3500);
+    }
+
+    // pointer events (mouse + touch)
+    stage.addEventListener('pointerdown', (e) => { e.preventDefault(); startHold(); });
+    stage.addEventListener('pointerup',   (e) => { e.preventDefault(); if (holding) endHold(false); });
+    stage.addEventListener('pointerleave',(e) => { if (holding) endHold(false); });
+
+    /* ── Scroll Reveal ───────────────────────────────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ── Form Submit ─────────────────────────────────────────────────── */
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form    = document.getElementById('ctaForm');
+      const success = document.getElementById('formSuccess');
+      form.style.display    = 'none';
+      success.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
