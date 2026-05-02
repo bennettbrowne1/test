@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Flash Afterimage VSL — Accent Roofing</title>
+<style>
+/* Fonts embedded by Hyperframes compiler at render time */
+</style>
+<script src="gsap.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #080808;
+  --card: #0d0d0d;
+  --gold: #C9A84C;
+  --gold-bright: #EDD57A;
+  --gold-dim: #6b5520;
+  --white: #EDE9E0;
+  --white-dim: #8a8780;
+  --red-dark: #8B1A1A;
+  --border: rgba(201,168,76,0.15);
+  --section-bg: rgba(201,168,76,0.06);
+}
+body { background: #080808; margin: 0; padding: 0; }
+.clip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     ROOT COMPOSITION
+     ═══════════════════════════════════════════════════════ -->
+<div
+  data-composition-id="accent-vsl"
+  data-width="1920"
+  data-height="1080"
+  style="position:relative;width:1920px;height:1080px;background:#080808;overflow:hidden;"
+>
+
+  <!-- AUDIO ELEMENTS -->
+  <audio id="seg1" src="audio/SEG_1.mp3" data-start="0" data-duration="93.68" data-track-index="4" data-audio-start="0"></audio>
+  <audio id="seg2" src="audio/SEG_2.mp3" data-start="93.68" data-duration="196.78" data-track-index="5" data-audio-start="93.68"></audio>
+  <audio id="seg3" src="audio/SEG_3.mp3" data-start="290.46" data-duration="71.26" data-track-index="6" data-audio-start="290.46"></audio>
+
+  <!-- ─── SCENE 01 — Title Card (0–20s) ─────────────────── -->
+  <div
+    id="scene01"
+    class="clip"
+    data-start="0"
+    data-duration="20"
+    data-track-index="1"
+    style="background:#080808;display:flex;align-items:center;justify-content:center;z-index:1;"
+  >
+    <!-- Gold scan line -->
+    <div id="s1-scanline" data-layout-ignore style="position:absolute;left:0;top:0;width:100%;height:1px;background:var(--gold);opacity:0.35;z-index:10;"></div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:32px;max-width:1200px;text-align:center;">
+      <div id="s1-eyebrow" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;">FLASH AFTERIMAGE VSL — CONFIDENTIAL</div>
+
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div id="s1-h1" style="font-family:'Bebas Neue',sans-serif;font-size:96px;line-height:0.93;color:var(--white);letter-spacing:2px;">The Market Already Trusts <span style="color:var(--gold);">Accent.</span></div>
+        <div id="s1-h2" style="font-family:'Bebas Neue',sans-serif;font-size:96px;line-height:0.93;color:var(--white);letter-spacing:2px;">This Makes Sure They Remember It.</div>
+      </div>
+
+      <div id="s1-sub" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:var(--white-dim);max-width:680px;line-height:1.6;">A direct-response market-memory system built for Phillip Scribbins — Accent Roofing Service.</div>
+
+      <div id="s1-stats" style="display:flex;align-items:center;border:1px solid var(--border);">
+        <div style="text-align:center;padding:24px 52px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--gold);font-variant-numeric:tabular-nums;">1989</div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--white-dim);letter-spacing:3px;text-transform:uppercase;margin-top:4px;">IN MARKET SINCE</div>
+        </div>
+        <div style="width:1px;height:52px;background:var(--gold);opacity:0.4;"></div>
+        <div style="text-align:center;padding:24px 52px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--gold);">4</div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--white-dim);letter-spacing:3px;text-transform:uppercase;margin-top:4px;">SYSTEM PHASES</div>
+        </div>
+        <div style="width:1px;height:52px;background:var(--gold);opacity:0.4;"></div>
+        <div style="text-align:center;padding:24px 52px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--gold);">1</div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--white-dim);letter-spacing:3px;text-transform:uppercase;margin-top:4px;">GOAL: BOOKED JOBS</div>
+        </div>
+      </div>
+
+      <div id="s1-scroll" style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="width:1px;height:36px;background:var(--gold);opacity:0.6;"></div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:4px;text-transform:uppercase;">SCROLL</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SCENE 02 — Open / Hook (20–60s) ──────────────── -->
+  <div
+    id="scene02"
+    class="clip"
+    data-start="20"
+    data-duration="40"
+    data-track-index="1"
+    style="background:#080808;z-index:1;"
+  >
+    <div style="display:flex;width:100%;height:100%;padding:80px 100px;gap:80px;box-sizing:border-box;">
+
+      <!-- Left column -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:22px;justify-content:center;min-width:0;">
+        <div id="s2-label" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;">VOICEOVER — OPEN</div>
+        <div id="s2-h1" style="font-family:'Bebas Neue',sans-serif;font-size:60px;line-height:0.93;color:var(--white);">Phillip — This Was Made <span style="color:var(--gold);">For You.</span></div>
+
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <p id="s2-vo1" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">From the outside, it is obvious you already have the substance.</p>
+          <p id="s2-vo2" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">You have been in this market for decades. You are not pretending to be local. You are local. You are not trying to look experienced. You are experienced.</p>
+          <p id="s2-vo3" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">And when a homeowner lands on your website, they see something most roofing companies cannot honestly say:</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div id="s2-proof1" style="background:var(--section-bg);border:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;gap:12px;">
+            <span style="color:var(--gold);font-size:10px;flex-shrink:0;">◆</span>
+            <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:var(--white);">Family-owned. Atlanta and Athens area since 1989.</span>
+          </div>
+          <div id="s2-proof2" style="background:var(--section-bg);border:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;gap:12px;">
+            <span style="color:var(--gold);font-size:10px;flex-shrink:0;">◆</span>
+            <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:var(--white);">On-site project managers. Transparent service.</span>
+          </div>
+          <div id="s2-proof3" style="background:var(--section-bg);border:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;gap:12px;">
+            <span style="color:var(--gold);font-size:10px;flex-shrink:0;">◆</span>
+            <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:var(--white);">Industry-leading warranties. Real project work.</span>
+          </div>
+          <div id="s2-proof4" style="background:var(--section-bg);border:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;gap:12px;">
+            <span style="color:var(--gold);font-size:10px;flex-shrink:0;">◆</span>
+            <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:var(--white);">GAF Master Elite status. Real homeowner proof.</span>
+          </div>
+        </div>
+
+        <div id="s2-quote" style="border-left:3px solid var(--gold);padding-left:24px;">
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:var(--white);line-height:1.7;">So this is not a 'how do we become credible?' problem. It is a 'how do we make the market feel that credibility faster' problem.</p>
+        </div>
+      </div>
+
+      <!-- Right column — Asset Panel -->
+      <div id="s2-panel" style="width:440px;flex-shrink:0;background:var(--card);border:1px solid var(--border);display:flex;flex-direction:column;">
+        <div style="padding:22px 26px;border-bottom:1px solid var(--border);">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VISUAL ASSET — OPEN SEQUENCE</div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--white-dim);letter-spacing:2px;">:00 — :45</div>
+        </div>
+        <div style="padding:22px 26px;display:flex;flex-direction:column;gap:20px;flex:1;">
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">ON SCREEN</div>
+            <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--white);line-height:1.6;">Slow push across real Accent project photos. Team. Trucks. Logo. Review thumbnails.</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">MOOD</div>
+            <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--white);line-height:1.6;">Quiet authority. A company that has nothing to prove.</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">MUSIC</div>
+            <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--white);line-height:1.6;">Low, cinematic. Subtle tension beneath warmth.</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">CUT RATE</div>
+            <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:14px;color:var(--white);line-height:1.6;">2–3 seconds per image. Slow dissolves.</div>
+          </div>
+          <!-- Panel scan line -->
+          <div id="s2-panel-scan" data-layout-ignore style="position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold);opacity:0.2;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── FULL-WIDTH BREAK (58–61s) ─────────────────────── -->
+  <div
+    id="scene-break"
+    class="clip"
+    data-start="58"
+    data-duration="3"
+    data-track-index="2"
+    style="background:var(--section-bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;z-index:50;"
+  >
+    <div id="sb-quote" style="text-align:center;max-width:1000px;padding:0 80px;">
+      <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:32px;color:var(--white);line-height:1.6;">
+        "In roofing, the best company doesn't always get the call first. The company that feels <span style="color:var(--gold);">most familiar</span> usually does."
+      </p>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-dim);letter-spacing:3px;text-transform:uppercase;">— Flash Authority Engine · Core Principle</div>
+  </div>
+
+  <!-- ─── SCENE 03 — The Real Problem (60–93.68s) ───────── -->
+  <div
+    id="scene03"
+    class="clip"
+    data-start="60"
+    data-duration="33.68"
+    data-track-index="1"
+    style="background:#080808;z-index:1;"
+  >
+    <div style="display:flex;width:100%;height:100%;padding:80px 100px;gap:80px;box-sizing:border-box;">
+
+      <!-- Left column -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px;justify-content:center;min-width:0;">
+        <div id="s3-label" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;">SECTION 01 — THE REAL PROBLEM</div>
+        <div id="s3-h1" style="font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:0.93;color:var(--white);">Being Seen Is Not <span style="color:var(--gold);">Enough.</span></div>
+        <p id="s3-vo1" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">A homeowner can scroll past ten roofers in one week and remember none of them.</p>
+
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div id="s3-n1" style="background:rgba(139,26,26,0.08);border-left:3px solid var(--red-dark);padding:11px 16px;font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:var(--white-dim);">— Same house photo.</div>
+          <div id="s3-n2" style="background:rgba(139,26,26,0.08);border-left:3px solid var(--red-dark);padding:11px 16px;font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:var(--white-dim);">— Same 'free inspection' offer.</div>
+          <div id="s3-n3" style="background:rgba(139,26,26,0.08);border-left:3px solid var(--red-dark);padding:11px 16px;font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:var(--white-dim);">— Same storm damage graphic.</div>
+          <div id="s3-n4" style="background:rgba(139,26,26,0.08);border-left:3px solid var(--red-dark);padding:11px 16px;font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:var(--white-dim);">— Same promise. Same blur.</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <p id="s3-vo2" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:var(--white);line-height:1.6;">Then the leak shows up. The shingles lift. The storm rolls through.</p>
+          <p id="s3-vo3" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:var(--white);line-height:1.6;">And now the homeowner isn't calmly researching. They're trying to solve a stressful problem fast.</p>
+          <p id="s3-vo4" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:var(--white);line-height:1.6;">So they do what almost every homeowner does. They call the name that already feels known.</p>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div style="width:460px;flex-shrink:0;display:flex;flex-direction:column;gap:28px;justify-content:center;">
+        <div id="s3-quote" style="border-left:3px solid var(--gold);padding-left:24px;">
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--white);line-height:1.7;">Roofers lose jobs before the phone ever rings. Not because they're bad at roofing. Because they were <span style="color:var(--gold);">invisible in the memory layer</span> of the market.</p>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);">
+          <div style="padding:18px 22px;border-bottom:1px solid var(--border);">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;">VISUAL ASSET</div>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--white-dim);">:45 — 1:30</div>
+          </div>
+          <div style="padding:18px 22px;display:flex;flex-direction:column;gap:14px;">
+            <div>
+              <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;">ON SCREEN</div>
+              <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.5;">Split feed of identical-looking local roofing ads. Quick cuts. Slight desaturation.</div>
+            </div>
+            <div>
+              <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;">TRANSITION</div>
+              <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.5;">Hard cut to black. Silence for 1 beat. Then: the Accent logo. Music resumes.</div>
+            </div>
+            <div>
+              <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;">INTENT</div>
+              <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.5;">The silence + logo creates a pattern interrupt.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SEG1→SEG2 FLASH BLACK (92.68–93.68s) ─────────── -->
+  <div
+    id="flash-black"
+    class="clip"
+    data-start="92.68"
+    data-duration="1"
+    data-track-index="8"
+    style="background:#000000;z-index:100;"
+  ></div>
+
+  <!-- ─── SCENE 04 — Why Accent Is Different (93.68–138.68s) -->
+  <div
+    id="scene04"
+    class="clip"
+    data-start="93.68"
+    data-duration="45"
+    data-track-index="1"
+    style="background:#080808;z-index:1;"
+  >
+    <div style="display:flex;width:100%;height:100%;padding:80px 100px;gap:80px;box-sizing:border-box;align-items:center;">
+
+      <!-- Left column -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:22px;min-width:0;">
+        <div id="s4-label" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;">SECTION 02 — WHY ACCENT IS IN A DIFFERENT POSITION</div>
+        <div id="s4-h1" style="font-family:'Bebas Neue',sans-serif;font-size:60px;line-height:0.93;color:var(--white);">You Already Have What Most Roofers <span style="color:var(--gold);">Wish They Had.</span></div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <p id="s4-vo1" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">Time in the market. Real project history. A real team. A real service process.</p>
+          <p id="s4-vo2" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">The foundation is already there. The trust is already there. The proof is already there.</p>
+          <p id="s4-vo3" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">But markets don't reward proof that sits quietly. Markets reward proof that is repeated until it becomes familiarity.</p>
+          <p id="s4-vo4" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">Once a homeowner has seen Accent enough times in enough believable ways — the estimate doesn't feel like a cold start. It feels like the obvious next step.</p>
+        </div>
+      </div>
+
+      <!-- Right column — Credential Grid 2×2 -->
+      <div style="width:540px;flex-shrink:0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div id="s4-c1" style="background:var(--card);border:1px solid var(--border);padding:18px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);margin-bottom:8px;font-variant-numeric:tabular-nums;">1989</div>
+            <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.5;">Serving Atlanta &amp; Athens since. That's not a claim — it's a track record.</div>
+          </div>
+          <div id="s4-c2" style="background:var(--card);border:1px solid var(--border);padding:18px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);margin-bottom:8px;">GAF</div>
+            <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.5;">Master Elite status. A credential most roofers don't have and can't fake.</div>
+          </div>
+          <div id="s4-c3" style="background:var(--card);border:1px solid var(--border);padding:18px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);margin-bottom:8px;">100%</div>
+            <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.5;">On-site project management. Not a truck and a voicemail.</div>
+          </div>
+          <div id="s4-c4" style="background:var(--card);border:1px solid var(--border);padding:18px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);margin-bottom:8px;">Real</div>
+            <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.5;">Before/after portfolio. Real homeowners. Real proof. Not stock photography.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SCENE 05 — The Reframe (138.68–188.68s) ──────── -->
+  <div
+    id="scene05"
+    class="clip"
+    data-start="138.68"
+    data-duration="50"
+    data-track-index="1"
+    style="background:#080808;display:flex;align-items:center;justify-content:center;z-index:1;"
+  >
+    <div style="width:760px;display:flex;flex-direction:column;gap:36px;align-items:center;text-align:center;">
+      <div id="s5-label" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;">SECTION 03 — THE REFRAME</div>
+      <div id="s5-h1" style="font-family:'Bebas Neue',sans-serif;font-size:60px;line-height:0.93;color:var(--white);">The Game Is Not <span style="color:var(--gold);">'Convince Strangers From Zero.'</span></div>
+
+      <!-- VS block -->
+      <div style="display:flex;align-items:stretch;width:100%;">
+        <div id="s5-bad" style="flex:1;background:rgba(139,26,26,0.06);border:1px solid rgba(139,26,26,0.28);padding:28px;text-align:left;">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--red-dark);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">WRONG GAME</div>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:var(--white-dim);line-height:1.7;">Spend money to be seen. Get forgotten by next week. Compete on price. Start from zero every estimate.</p>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 20px;flex-shrink:0;">
+          <div id="s5-vs" style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--gold-dim);">VS</div>
+        </div>
+        <div id="s5-good" style="flex:1;background:var(--section-bg);border:1px solid rgba(201,168,76,0.28);padding:28px;text-align:left;">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">RIGHT GAME</div>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:var(--white);line-height:1.7;">Make the right homeowners already know Accent before the problem gets urgent. Trust exists before the inspection.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;text-align:center;">
+        <p id="s5-vo1" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">That is what lowers friction.</p>
+        <p id="s5-vo2" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">That is what makes price less central.</p>
+        <p id="s5-vo3" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">That is what makes the call happen faster.</p>
+        <p id="s5-vo4" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">Accent doesn't need to invent authority. Accent needs to <span style="color:var(--gold);">compound trust.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SCENE 06 — Flash Afterimage Solution (188.68–248.68s) -->
+  <div
+    id="scene06"
+    class="clip"
+    data-start="188.68"
+    data-duration="60"
+    data-track-index="1"
+    style="background:#080808;z-index:1;"
+  >
+    <div style="display:flex;width:100%;height:100%;padding:80px 100px;gap:80px;box-sizing:border-box;">
+
+      <!-- Left column -->
+      <div style="flex:0 0 400px;display:flex;flex-direction:column;gap:24px;justify-content:center;">
+        <div id="s6-label" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;">SECTION 04 — THE FLASH AFTERIMAGE SOLUTION</div>
+        <div id="s6-h1" style="font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:0.93;color:var(--white);">Not Just Ads. A <span style="color:var(--gold);">Market-Memory</span> System.</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <p id="s6-vo1" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">Flash Afterimage has one job:</p>
+          <p id="s6-vo2" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">Make Accent Roofing feel familiar, trusted, and legitimate before the homeowner needs to choose.</p>
+          <p id="s6-vo3" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);line-height:1.6;">Here is what that looks like.</p>
+        </div>
+      </div>
+
+      <!-- Right column — 4-step system -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:0;min-width:0;">
+        <div id="s6-step1" style="border-left:1px solid rgba(201,168,76,0.07);padding:20px 0 20px 28px;margin-bottom:16px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:rgba(201,168,76,0.12);line-height:1;">01</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);letter-spacing:1px;margin-bottom:8px;">NEIGHBORHOOD IMPRINT ASSETS</div>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white-dim);line-height:1.6;">Not generic roofing ads. Specific, local, believable creatives tied to how homeowners actually think. Buford. Suwanee. Johns Creek. Marietta. North Atlanta.</p>
+        </div>
+        <div id="s6-step2" style="border-left:1px solid rgba(201,168,76,0.07);padding:20px 0 20px 28px;margin-bottom:16px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:rgba(201,168,76,0.12);line-height:1;">02</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);letter-spacing:1px;margin-bottom:8px;">DECISION SHIELD PAGE</div>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white-dim);line-height:1.6;">A page designed to protect the homeowner from confusion. Clear proof, real projects, process trust, and the reasons Accent feels safer than the random roofer they found yesterday.</p>
+        </div>
+        <div id="s6-step3" style="border-left:1px solid rgba(201,168,76,0.07);padding:20px 0 20px 28px;margin-bottom:16px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:rgba(201,168,76,0.12);line-height:1;">03</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);letter-spacing:1px;margin-bottom:8px;">RETARGETING MEMORY LOOP</div>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white-dim);line-height:1.6;">Every serious homeowner who touches the brand keeps seeing the right message. Real work. Real trust. Real local familiarity. Until Accent is the only name they remember when the problem is urgent.</p>
+        </div>
+        <div id="s6-step4" style="border-left:1px solid rgba(201,168,76,0.07);padding:20px 0 20px 28px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:rgba(201,168,76,0.12);line-height:1;">04</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);letter-spacing:1px;margin-bottom:8px;">QUOTE COLLAPSE SEQUENCE</div>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white-dim);line-height:1.6;">The follow-up that makes other estimates feel incomplete. When the homeowner remembers the project manager, the communication, the transparency — the cheap quote loses power.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SCENE 07 — Why It Fits Accent (248.68–290.46s) ── -->
+  <div
+    id="scene07"
+    class="clip"
+    data-start="248.68"
+    data-duration="41.77"
+    data-track-index="1"
+    style="background:#080808;display:flex;align-items:center;justify-content:center;z-index:1;"
+  >
+    <div style="width:880px;display:flex;flex-direction:column;gap:24px;">
+      <div id="s7-label" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;">SECTION 05 — WHY THIS FITS ACCENT SPECIFICALLY</div>
+      <div id="s7-h1" style="font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:0.93;color:var(--white);">Phillip, The Raw Material Is Already <span style="color:var(--gold);">Strong.</span></div>
+      <p id="s7-vo1" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">You are already telling the market:</p>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div id="s7-p1" style="background:var(--section-bg);border:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;gap:12px;">
+          <span style="color:var(--gold);font-size:10px;flex-shrink:0;">◆</span>
+          <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:var(--white);">'We communicate clearly.'</span>
+        </div>
+        <div id="s7-p2" style="background:var(--section-bg);border:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;gap:12px;">
+          <span style="color:var(--gold);font-size:10px;flex-shrink:0;">◆</span>
+          <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:var(--white);">'We manage projects on-site.'</span>
+        </div>
+        <div id="s7-p3" style="background:var(--section-bg);border:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;gap:12px;">
+          <span style="color:var(--gold);font-size:10px;flex-shrink:0;">◆</span>
+          <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:var(--white);">'We stand behind the work.'</span>
+        </div>
+        <div id="s7-p4" style="background:var(--section-bg);border:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;gap:12px;">
+          <span style="color:var(--gold);font-size:10px;flex-shrink:0;">◆</span>
+          <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;color:var(--white);">'We treat homeowners like neighbors.'</span>
+        </div>
+      </div>
+
+      <div id="s7-quote" style="border-left:3px solid var(--gold);padding-left:24px;">
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--white);line-height:1.7;">That is not weak positioning. That is <span style="color:var(--gold);">premium positioning.</span> But premium positioning only wins when the market sees it enough times to believe it <span style="color:var(--gold);">before the crisis.</span></p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <p id="s7-vo2" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);">Most roofing companies are still marketing like strangers.</p>
+        <p id="s7-vo3" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);">That is Accent's edge.</p>
+        <p id="s7-vo4" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;color:var(--white);">Accent does not need to invent trust. Accent needs to <span style="color:var(--gold);">compound trust.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SCENE 08 — Objection Handling (290.46–325.46s) ── -->
+  <div
+    id="scene08"
+    class="clip"
+    data-start="290.46"
+    data-duration="35"
+    data-track-index="1"
+    style="background:#080808;z-index:1;"
+  >
+    <div style="display:flex;flex-direction:column;width:100%;height:100%;padding:60px 160px;box-sizing:border-box;">
+      <div id="s8-label" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;">SECTION 06 — OBJECTION HANDLING</div>
+      <div id="s8-h1" style="font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:0.93;color:var(--white);margin-bottom:36px;">Maybe The <span style="color:var(--gold);">Thought Is…</span></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;">
+        <div id="s8-card1" style="background:var(--card);border:1px solid var(--border);padding:26px;">
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--white-dim);margin-bottom:12px;line-height:1.5;">We already have a good reputation.</p>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.6;">Exactly. This makes that reputation show up earlier and more often — before the homeowner even starts looking.</p>
+        </div>
+        <div id="s8-card2" style="background:var(--card);border:1px solid var(--border);padding:26px;">
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--white-dim);margin-bottom:12px;line-height:1.5;">We already get referrals.</p>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.6;">Good. This makes those referrals convert harder — because people have already seen the brand before they ask around.</p>
+        </div>
+        <div id="s8-card3" style="background:var(--card);border:1px solid var(--border);padding:26px;">
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--white-dim);margin-bottom:12px;line-height:1.5;">We already have a website.</p>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.6;">This is not about having a website. It is about building a memory system around the proof that is already on it.</p>
+        </div>
+        <div id="s8-card4" style="background:var(--card);border:1px solid var(--border);padding:26px;">
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--white-dim);margin-bottom:12px;line-height:1.5;">We already run marketing.</p>
+          <p style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--white);line-height:1.6;">Most roofing marketing gets seen and forgotten. Flash Afterimage is built to make Accent get seen and remembered. That is a different outcome.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SCENE 09 — Close + CTA (325.46–361.72s) ─────── -->
+  <div
+    id="scene09"
+    class="clip"
+    data-start="325.46"
+    data-duration="36.26"
+    data-track-index="1"
+    style="background:radial-gradient(ellipse at center,rgba(201,168,76,0.04) 0%,transparent 70%),#080808;display:flex;align-items:center;justify-content:center;z-index:1;"
+  >
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px;max-width:1100px;padding:60px 80px;box-sizing:border-box;">
+      <div id="s9-label" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;">CLOSE</div>
+
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <div id="s9-h1" style="font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:0.93;color:var(--white);">Accent Already Looks Like the Company</div>
+        <div id="s9-h2" style="font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:0.93;color:var(--gold);">Homeowners Should Trust.</div>
+      </div>
+
+      <p id="s9-vo0" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:20px;color:var(--white);max-width:680px;line-height:1.6;">The real move now is making sure North Georgia feels that trust faster.</p>
+
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:center;">
+        <div id="s9-u1" style="display:flex;align-items:center;gap:16px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);">—</span>
+          <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">Before the leak gets worse.</span>
+        </div>
+        <div id="s9-u2" style="display:flex;align-items:center;gap:16px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);">—</span>
+          <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">Before the storm hits.</span>
+        </div>
+        <div id="s9-u3" style="display:flex;align-items:center;gap:16px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);">—</span>
+          <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">Before the homeowner starts guessing.</span>
+        </div>
+        <div id="s9-u4" style="display:flex;align-items:center;gap:16px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);">—</span>
+          <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">Before a weaker roofer gets the first call.</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <p id="s9-vc1" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">The company that feels familiar has a massive advantage.</p>
+        <p id="s9-vc2" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">Accent has already earned the right to be that company.</p>
+        <p id="s9-vc3" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:var(--white);">Now it's time to build the system that makes the market remember it.</p>
+      </div>
+
+      <div id="s9-cta" style="display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:4px;">
+        <div style="background:var(--gold);color:#080808;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;padding:20px 52px;display:inline-block;">PHILLIP — LET'S BUILD ACCENT'S FLASH AFTERIMAGE</div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--white-dim);letter-spacing:3px;text-transform:uppercase;">No agency contract. No retainer guessing. Built around your proof.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FILM GRAIN OVERLAY — full composition ─────────── -->
+  <div
+    id="film-grain"
+    class="clip"
+    data-start="0"
+    data-duration="361.72"
+    data-track-index="9"
+    data-layout-ignore
+    style="pointer-events:none;z-index:999;"
+  >
+    <svg width="1920" height="1080" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.035;" xmlns="http://www.w3.org/2000/svg">
+      <filter id="grain-filter" x="0%" y="0%" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain-filter)" fill="white"/>
+    </svg>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       GSAP TIMELINE
+       All tween times are ABSOLUTE positions in the composition.
+       ═══════════════════════════════════════════════════════ -->
+  <script>
+    window.__timelines = window.__timelines || {};
+
+    const tl = gsap.timeline({ paused: true });
+
+    // ─── SCENE 01 (0–20s) ─────────────────────────────────
+    tl.from("#scene01",   { opacity: 0, duration: 0.5, ease: "power2.out" },  0.1);
+    tl.from("#s1-eyebrow",{ opacity: 0, y: 10,  duration: 0.6, ease: "power3.out" }, 0.3);
+    tl.from("#s1-h1",     { opacity: 0, y: 34,  duration: 0.7, ease: "expo.out"   }, 1.0);
+    tl.from("#s1-h2",     { opacity: 0, y: 34,  duration: 0.7, ease: "expo.out"   }, 1.15);
+    tl.from("#s1-sub",    { opacity: 0, y: 16,  duration: 0.6, ease: "power2.out" }, 2.5);
+    tl.from("#s1-stats",  { opacity: 0, y: 20,  duration: 0.7, ease: "power3.out" }, 3.5);
+    tl.from("#s1-scroll", { opacity: 0, y: 10,  duration: 0.5, ease: "sine.out"   }, 4.5);
+    // Bob animation — finite repeat (18 cycles × 1s = 18s, fits within 20s scene)
+    tl.to("#s1-scroll",   { y: -8, duration: 1.0, ease: "sine.inOut", repeat: 18, yoyo: true }, 5.0);
+    // Scan line sweep — finite (3 sweeps × 6.5s ≈ 20s)
+    tl.fromTo("#s1-scanline",
+      { top: "0px", opacity: 0.35 },
+      { top: "1079px", duration: 6.5, ease: "none", repeat: 2 },
+      0.2
+    );
+
+    // ─── SCENE 02 (20–60s) ────────────────────────────────
+    tl.from("#scene02",   { opacity: 0, duration: 0.75, ease: "power2.out" }, 20.1);
+    tl.from("#s2-label",  { opacity: 0, x: -16, duration: 0.5, ease: "power2.out"  }, 20.3);
+    tl.from("#s2-h1",     { opacity: 0, y: 40,  duration: 0.8, ease: "expo.out"    }, 20.6);
+    tl.from("#s2-vo1",    { opacity: 0, y: 14,  duration: 0.5, ease: "power3.out"  }, 21.3);
+    tl.from("#s2-vo2",    { opacity: 0, y: 14,  duration: 0.5, ease: "power2.out"  }, 21.6);
+    tl.from("#s2-vo3",    { opacity: 0, y: 14,  duration: 0.5, ease: "sine.out"    }, 21.9);
+    tl.from("#s2-proof1", { opacity: 0, x: 18,  duration: 0.5, ease: "expo.out"    }, 22.8);
+    tl.from("#s2-proof2", { opacity: 0, x: 18,  duration: 0.5, ease: "expo.out"    }, 22.95);
+    tl.from("#s2-proof3", { opacity: 0, x: 18,  duration: 0.5, ease: "expo.out"    }, 23.1);
+    tl.from("#s2-proof4", { opacity: 0, x: 18,  duration: 0.5, ease: "expo.out"    }, 23.25);
+    tl.from("#s2-quote",  { opacity: 0, x: -12, duration: 0.7, ease: "power3.out"  }, 24.2);
+    tl.from("#s2-panel",  { opacity: 0, x: 28,  duration: 0.8, ease: "expo.out"    }, 21.0);
+
+    // ─── FULL-WIDTH BREAK (58–61s) ────────────────────────
+    tl.from("#scene-break", { opacity: 0, duration: 0.4,  ease: "power2.out"  }, 58.1);
+    tl.from("#sb-quote",    { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out" }, 58.4);
+
+    // ─── SCENE 03 (60–93.68s) ─────────────────────────────
+    tl.from("#scene03",  { opacity: 0, duration: 0.5,  ease: "power2.out"  }, 60.1);
+    tl.from("#s3-label", { opacity: 0, x: -12, duration: 0.5, ease: "power2.out"  }, 60.3);
+    tl.from("#s3-h1",    { opacity: 0, y: 28,  duration: 0.7, ease: "expo.out"    }, 60.7);
+    tl.from("#s3-vo1",   { opacity: 0, y: 14,  duration: 0.5, ease: "power3.out"  }, 61.3);
+    tl.from("#s3-n1",    { opacity: 0, x: -14, duration: 0.4, ease: "expo.out"    }, 62.1);
+    tl.from("#s3-n2",    { opacity: 0, x: -14, duration: 0.4, ease: "expo.out"    }, 62.22);
+    tl.from("#s3-n3",    { opacity: 0, x: -14, duration: 0.4, ease: "expo.out"    }, 62.34);
+    tl.from("#s3-n4",    { opacity: 0, x: -14, duration: 0.4, ease: "expo.out"    }, 62.46);
+    tl.from("#s3-vo2",   { opacity: 0, y: 12,  duration: 0.5, ease: "power2.out"  }, 63.4);
+    tl.from("#s3-vo3",   { opacity: 0, y: 12,  duration: 0.5, ease: "power2.out"  }, 63.8);
+    tl.from("#s3-vo4",   { opacity: 0, y: 12,  duration: 0.5, ease: "sine.out"    }, 64.2);
+    tl.from("#s3-quote", { opacity: 0, x: 16,  duration: 0.7, ease: "expo.out"    }, 61.1);
+    // Flash to black (SEG1→SEG2 handoff)
+    tl.from("#flash-black", { opacity: 0, duration: 0.15, ease: "none" }, 92.68);
+    tl.to(  "#flash-black", { opacity: 0, duration: 0.35, ease: "power2.out" }, 93.15);
+
+    // ─── SCENE 04 (93.68–138.68s) ─────────────────────────
+    tl.from("#scene04",  { opacity: 0, duration: 0.75, ease: "power2.out" }, 93.85);
+    tl.from("#s4-label", { opacity: 0, x: -12, duration: 0.5, ease: "power2.out" }, 94.1);
+    tl.from("#s4-h1",    { opacity: 0, y: 32,  duration: 0.8, ease: "expo.out"   }, 94.4);
+    tl.from("#s4-vo1",   { opacity: 0, y: 16,  duration: 0.5, ease: "power3.out" }, 95.2);
+    tl.from("#s4-vo2",   { opacity: 0, y: 16,  duration: 0.5, ease: "power2.out" }, 95.55);
+    tl.from("#s4-vo3",   { opacity: 0, y: 16,  duration: 0.5, ease: "power2.out" }, 95.9);
+    tl.from("#s4-vo4",   { opacity: 0, y: 16,  duration: 0.5, ease: "sine.out"   }, 96.25);
+    tl.from("#s4-c1",    { opacity: 0, y: 20,  scale: 0.97, duration: 0.6, ease: "expo.out" }, 94.6);
+    tl.from("#s4-c2",    { opacity: 0, y: 20,  scale: 0.97, duration: 0.6, ease: "expo.out" }, 94.8);
+    tl.from("#s4-c3",    { opacity: 0, y: 20,  scale: 0.97, duration: 0.6, ease: "expo.out" }, 95.0);
+    tl.from("#s4-c4",    { opacity: 0, y: 20,  scale: 0.97, duration: 0.6, ease: "expo.out" }, 95.2);
+
+    // ─── SCENE 05 (138.68–188.68s) ────────────────────────
+    tl.from("#scene05",  { opacity: 0, duration: 0.75, ease: "power2.out"  }, 138.85);
+    tl.from("#s5-label", { opacity: 0, y: 10,  duration: 0.5, ease: "power3.out" }, 139.1);
+    tl.from("#s5-h1",    { opacity: 0, scale: 0.94, duration: 1.0, ease: "expo.out" }, 139.4);
+    tl.from("#s5-bad",   { opacity: 0, x: -40, duration: 0.6, ease: "expo.out"   }, 140.8);
+    tl.from("#s5-vs",    { opacity: 0, scale: 0.7, duration: 0.4, ease: "back.out(1.7)" }, 141.1);
+    tl.from("#s5-good",  { opacity: 0, x: 40,  duration: 0.6, ease: "expo.out"   }, 140.8);
+    tl.from("#s5-vo1",   { opacity: 0, y: 12,  duration: 0.5, ease: "power2.out" }, 142.2);
+    tl.from("#s5-vo2",   { opacity: 0, y: 12,  duration: 0.5, ease: "power2.out" }, 142.6);
+    tl.from("#s5-vo3",   { opacity: 0, y: 12,  duration: 0.5, ease: "power2.out" }, 143.0);
+    tl.from("#s5-vo4",   { opacity: 0, y: 12,  duration: 0.5, ease: "power3.out" }, 143.4);
+
+    // ─── SCENE 06 (188.68–248.68s) ────────────────────────
+    tl.from("#scene06",   { opacity: 0, duration: 0.75, ease: "power2.out" }, 188.85);
+    tl.from("#s6-label",  { opacity: 0, x: -12, duration: 0.5, ease: "power2.out"  }, 189.1);
+    tl.from("#s6-h1",     { opacity: 0, y: 28,  duration: 0.7, ease: "expo.out"    }, 189.4);
+    tl.from("#s6-vo1",    { opacity: 0, y: 14,  duration: 0.4, ease: "power3.out"  }, 190.2);
+    tl.from("#s6-vo2",    { opacity: 0, y: 14,  duration: 0.4, ease: "power2.out"  }, 190.5);
+    tl.from("#s6-vo3",    { opacity: 0, y: 14,  duration: 0.4, ease: "sine.out"    }, 190.8);
+    tl.from("#s6-step1",  { opacity: 0, x: 20,  duration: 0.6, ease: "expo.out"    }, 189.6);
+    tl.from("#s6-step2",  { opacity: 0, x: 20,  duration: 0.6, ease: "expo.out"    }, 189.76);
+    tl.from("#s6-step3",  { opacity: 0, x: 20,  duration: 0.6, ease: "expo.out"    }, 189.92);
+    tl.from("#s6-step4",  { opacity: 0, x: 20,  duration: 0.6, ease: "expo.out"    }, 190.08);
+
+    // ─── SCENE 07 (248.68–290.46s) ────────────────────────
+    tl.from("#scene07",  { opacity: 0, duration: 0.75, ease: "power2.out" }, 248.85);
+    tl.from("#s7-label", { opacity: 0, x: -12, duration: 0.5, ease: "power2.out"  }, 249.1);
+    tl.from("#s7-h1",    { opacity: 0, y: 28,  duration: 0.7, ease: "expo.out"    }, 249.4);
+    tl.from("#s7-vo1",   { opacity: 0, y: 12,  duration: 0.5, ease: "power3.out"  }, 250.2);
+    tl.from("#s7-p1",    { opacity: 0, x: 18,  duration: 0.5, ease: "expo.out"    }, 250.8);
+    tl.from("#s7-p2",    { opacity: 0, x: 18,  duration: 0.5, ease: "expo.out"    }, 250.95);
+    tl.from("#s7-p3",    { opacity: 0, x: 18,  duration: 0.5, ease: "expo.out"    }, 251.1);
+    tl.from("#s7-p4",    { opacity: 0, x: 18,  duration: 0.5, ease: "expo.out"    }, 251.25);
+    tl.from("#s7-quote", { opacity: 0, x: -12, duration: 0.7, ease: "power3.out"  }, 252.2);
+    tl.from("#s7-vo2",   { opacity: 0, y: 12,  duration: 0.4, ease: "power2.out"  }, 253.2);
+    tl.from("#s7-vo3",   { opacity: 0, y: 12,  duration: 0.4, ease: "power2.out"  }, 253.55);
+    tl.from("#s7-vo4",   { opacity: 0, y: 12,  duration: 0.5, ease: "power3.out"  }, 253.9);
+
+    // ─── SCENE 08 (290.46–325.46s) ────────────────────────
+    tl.from("#scene08",  { opacity: 0, duration: 0.75, ease: "power2.out" }, 290.62);
+    tl.from("#s8-label", { opacity: 0, x: -12, duration: 0.5, ease: "power2.out" }, 290.85);
+    tl.from("#s8-h1",    { opacity: 0, y: 24,  duration: 0.7, ease: "expo.out"   }, 291.2);
+    // Cards timed per brief: 290.46, 298.46, 307.46, 316.46
+    tl.from("#s8-card1", { opacity: 0, y: 12,  duration: 0.6, ease: "power3.out" }, 291.8);
+    tl.from("#s8-card2", { opacity: 0, y: 12,  duration: 0.6, ease: "power3.out" }, 298.46);
+    tl.from("#s8-card3", { opacity: 0, y: 12,  duration: 0.6, ease: "power3.out" }, 307.46);
+    tl.from("#s8-card4", { opacity: 0, y: 12,  duration: 0.6, ease: "power3.out" }, 316.46);
+
+    // ─── SCENE 09 (325.46–361.72s) ────────────────────────
+    tl.from("#scene09",  { opacity: 0, duration: 0.75, ease: "power2.out"  }, 325.62);
+    tl.from("#s9-label", { opacity: 0, y: 10,  duration: 0.5, ease: "power3.out" }, 325.9);
+    tl.from("#s9-h1",    { opacity: 0, scale: 0.96, duration: 0.8, ease: "expo.out" }, 326.3);
+    tl.from("#s9-h2",    { opacity: 0, scale: 0.96, duration: 0.8, ease: "expo.out" }, 326.7);
+    tl.from("#s9-vo0",   { opacity: 0, y: 14,  duration: 0.6, ease: "power2.out"  }, 327.5);
+    // Urgency list — 1.5s apart
+    tl.from("#s9-u1",    { opacity: 0, x: -16, duration: 0.5, ease: "expo.out"   }, 328.8);
+    tl.from("#s9-u2",    { opacity: 0, x: -16, duration: 0.5, ease: "expo.out"   }, 330.3);
+    tl.from("#s9-u3",    { opacity: 0, x: -16, duration: 0.5, ease: "expo.out"   }, 331.8);
+    tl.from("#s9-u4",    { opacity: 0, x: -16, duration: 0.5, ease: "expo.out"   }, 333.3);
+    // VO closing
+    tl.from("#s9-vc1",   { opacity: 0, y: 12,  duration: 0.5, ease: "power2.out" }, 335.2);
+    tl.from("#s9-vc2",   { opacity: 0, y: 12,  duration: 0.5, ease: "power2.out" }, 335.7);
+    tl.from("#s9-vc3",   { opacity: 0, y: 12,  duration: 0.5, ease: "power3.out" }, 336.2);
+    // CTA at absolute 355.46
+    tl.from("#s9-cta",   { opacity: 0, scale: 0, duration: 0.8, ease: "back.out(1.7)" }, 355.46);
+    // Final scene fade out (only exit animation in the composition)
+    tl.to("#scene09",    { opacity: 0, duration: 1.5, ease: "power2.inOut" }, 360.0);
+
+    window.__timelines["accent-vsl"] = tl;
+  </script>
+
+</div><!-- /accent-vsl -->
+
+</body>
+</html>
